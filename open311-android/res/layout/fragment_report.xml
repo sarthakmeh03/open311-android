@@ -1,35 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    
     android:layout_width="match_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="match_parent">
+
+<RelativeLayout 
+    android:id="@+id/parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
 
     <LinearLayout
-        android:id="@+id/button_bar"
+        android:id="@+id/submit_cancel_buttons"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/cancel_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="cancel"
             android:text="@string/cancel" />
-        
+
         <Button
             android:id="@+id/submit_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="submit"
             android:text="@string/submit" />
+    </LinearLayout>
+    
+    <View android:id="@+id/divider_line1" 
+          android:layout_width="match_parent" 
+          android:layout_height="2dp" 
+          android:background="@android:drawable/divider_horizontal_bright" 
+          android:layout_below="@+id/submit_cancel_buttons"  />
+    
+      <LinearLayout
+        android:id="@+id/report_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/divider_line1"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_serviceDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/report_status_description"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            style="?android:attr/listSeparatorTextViewStyle"/>
 
     </LinearLayout>
+    
+    <View android:id="@+id/divider_line2" 
+          android:layout_width="match_parent" 
+          android:layout_height="2dp" 
+          android:background="@android:drawable/divider_horizontal_bright" 
+          android:layout_below="@+id/report_description"  />
 
-    <ListView
-        android:id="@+id/reportListView"
+    <LinearLayout
+        android:id="@+id/media"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button_bar"
-        android:layout_centerHorizontal="true" >
-    </ListView>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/divider_line2"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/img_media"
+            android:layout_width="80dip"
+            android:layout_height="60dip"
+            android:src="@android:drawable/ic_menu_camera" />
+    </LinearLayout>
+    
+    <View android:id="@+id/divider_line3" 
+          android:layout_width="match_parent" 
+          android:layout_height="2dp" 
+          android:background="@android:drawable/divider_horizontal_bright" 
+          android:layout_below="@+id/media"  /> 
+
+    <RelativeLayout
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/divider_line3"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/location"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/displayValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@+id/tv_location"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    </RelativeLayout>
+    
+    <View android:id="@+id/divider_line4" 
+          android:layout_width="match_parent" 
+          android:layout_height="2dp" 
+          android:background="@android:drawable/divider_horizontal_bright" 
+          android:layout_below="@+id/location"  />
+    
+    
+   <RelativeLayout 
+         android:id="@+id/description"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:layout_below="@+id/divider_line4" >
+
+    <TextView
+        android:id="@+id/tv_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:textSize="24sp"
+        android:text="@string/report_description" />
+
+    <EditText
+        android:id="@+id/et_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_label"
+        android:paddingBottom="5dp"
+        android:ems="10" >
+
+    </EditText>
 
 </RelativeLayout>
+
+   <View android:id="@+id/divider_line5" 
+          android:layout_width="match_parent" 
+          android:layout_height="2dp" 
+          android:background="@android:drawable/divider_horizontal_bright" 
+          android:layout_below="@+id/description"  />
+
+   <LinearLayout
+        android:id="@+id/report_attributes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/divider_line5"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_attributes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/report_attributes"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            style="?android:attr/listSeparatorTextViewStyle" />
+
+    </LinearLayout>
+   
+</RelativeLayout>
+</ScrollView>

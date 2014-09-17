@@ -70,7 +70,7 @@ public class ReportActivity extends BaseFragmentActivity
 		mActionBar.setTitle(service.optString(Open311.SERVICE_NAME));
 		
 		ServiceRequest sr = new ServiceRequest(service, this);
-		mReportFragment = ReportFragment.newInstance(sr);
+		mReportFragment = new ReportFragment(sr,this);
 		
 		getSupportFragmentManager() .beginTransaction()
 									.replace(android.R.id.content, mReportFragment)

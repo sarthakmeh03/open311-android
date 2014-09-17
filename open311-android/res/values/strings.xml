@@ -41,5 +41,6 @@
     <string name="radio_button_normal">Standard</string>
     <string name="radio_button_hybrid">Hybrid</string>
     <string name="radio_button_satellite">Satellite</string>
+    <string name="report_status_description">Report Description</string>
     
 </resources>
